@@ -1,42 +1,60 @@
-// Starfield
-const canvas = document.getElementById('starfield');
-const ctx = canvas.getContext('2d');
+// Starfield effect
+const canvas = document.getElementById("starfield");
+const ctx = canvas.getContext("2d");
+
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-let stars = [];
-for (let i = 0; i < 100; i++) {
+const stars = [];
+const numStars = 100;
+
+for (let i = 0; i < numStars; i++) {
   stars.push({
     x: Math.random() * canvas.width,
     y: Math.random() * canvas.height,
-    radius: Math.random() * 2,
-    dx: (Math.random() - 0.5) * 0.5,
-    dy: (Math.random() - 0.5) * 0.5
+    z: Math.random() * canvas.width
   });
 }
 
 function drawStars() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = "black";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
   ctx.fillStyle = "white";
-  stars.forEach(star => {
-    ctx.beginPath();
-    ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-    ctx.fill();
-    star.x += star.dx;
-    star.y += star.dy;
-    if (star.x < 0 || star.x > canvas.width) star.dx *= -1;
-    if (star.y < 0 || star.y > canvas.height) star.dy *= -1;
-  });
+  for (let i = 0; i < numStars; i++) {
+    const star = stars[i];
+    star.z -= 2;
+    if (star.z <= 0) star.z = canvas.width;
+
+    const k = 128.0 / star.z;
+    const px = star.x * k + canvas.width / 2;
+    const py = star.y * k + canvas.height / 2;
+
+    if (px >= 0 && px <= canvas.width && py >= 0 && py <= canvas.height) {
+      const size = (1 - star.z / canvas.width) * 3;
+      ctx.beginPath();
+      ctx.arc(px, py, size, 0, 2 * Math.PI);
+      ctx.fill();
+    }
+  }
 }
 
-setInterval(drawStars, 30);
+function animate() {
+  drawStars();
+  requestAnimationFrame(animate);
+}
 
-// Navbar appear after intro
-setTimeout(() => {
-  document.getElementById('navbar').classList.add('show');
-}, 4000);
+animate();
 
-window.addEventListener('resize', () => {
+// Menu toggle
+const menuToggle = document.getElementById("menu-toggle");
+const menu = document.getElementById("menu");
+
+menuToggle.addEventListener("click", () => {
+  menu.style.display = menu.style.display === "block" ? "none" : "block";
+});
+
+// Resize canvas on window resize
+window.addEventListener("resize", () => {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 });
