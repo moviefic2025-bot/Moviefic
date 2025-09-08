@@ -1,147 +1,186 @@
-/* General Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
-  background: #000;
-  color: #fff;
-  font-family: Arial, sans-serif;
-  overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    background-color: #000; /* Black background */
+    color: #fff; /* White text for contrast */
+    font-family: 'Arial', sans-serif; /* Clean font */
+    overflow-x: hidden; /* No horizontal scroll */
 }
 
-/* Intro */
-#intro {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  flex-direction: column;
+#starry-spiral {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10; /* On top initially */
+    background: #000; /* Black for stars */
+    display: none; /* Hidden until we animate */
 }
 
-.starry {
-  position: absolute;
-  width: 100%; height: 100%;
-  background: radial-gradient(circle, rgba(255,255,255,0.7) 1px, transparent 1px);
-  background-size: 3px 3px;
-  animation: twinkle 5s infinite;
+header#banner {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8); /* Semi-transparent black for premium feel */
+    text-align: center;
+    padding: 10px 0;
+    z-index: 5;
+    display: none; /* Hidden initially */
 }
 
-#logo {
-  font-size: 3rem;
-  color: #00aaff;
-  animation: pulse 2s infinite;
+h1#moviefic-title {
+    font-size: 3em;
+    color: #00bfff; /* Pulsing blue */
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 6;
+    display: none; /* For fade-in */
 }
 
-@keyframes twinkle {
-  0%, 100% { opacity: 0.8; }
-  50% { opacity: 0.3; }
+#hamburger-menu {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 2em;
+    cursor: pointer;
+    display: none; /* Fade in later */
 }
 
-@keyframes pulse {
-  0%, 100% { text-shadow: 0 0 10px #00aaff, 0 0 20px #00aaff; }
-  50% { text-shadow: 0 0 25px #00aaff, 0 0 50px #00aaff; }
+nav#menu {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 20px;
+    background: #111;
+    padding: 10px;
+    border-radius: 5px;
 }
 
-/* Header */
-header {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%;
-  padding: 15px;
-  background: rgba(0,0,0,0.8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 900;
-  display: none;
+nav#menu ul {
+    list-style: none;
+    padding: 0;
 }
 
-header .banner {
-  font-size: 1.5rem;
-  color: #00aaff;
-  font-weight: bold;
+nav#menu li a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 5px;
 }
 
-.hamburger {
-  position: absolute;
-  right: 20px;
-  font-size: 1.8rem;
-  cursor: pointer;
+.hidden {
+    display: none;
 }
 
-/* Mobile Nav */
-.mobile-nav {
-  display: none;
-  position: fixed;
-  top: 60px;
-  right: 0;
-  background: #111;
-  padding: 10px;
-  z-index: 800;
-  flex-direction: column;
+main {
+    margin-top: 60px; /* Space for banner */
+    padding: 20px;
 }
 
-.mobile-nav a {
-  color: #fff;
-  text-decoration: none;
-  padding: 10px;
-  border-bottom: 1px solid #333;
+section {
+    margin-bottom: 40px;
 }
 
-.mobile-nav a:hover {
-  background: #222;
-}
-
-/* Grid */
-.grid-section {
-  padding: 80px 20px;
-  text-align: center;
-}
-
-.grid-section h2 {
-  margin-bottom: 20px;
-  color: #00aaff;
+h2 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 20px;
 }
 
 .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid */
+    gap: 20px;
+    justify-items: center;
 }
 
-.card {
-  overflow: hidden;
-  border-radius: 10px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.grid img {
+    width: 200px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px; /* Rounded corners for premium look */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover prep */
 }
 
-.card img {
-  width: 100%;
-  display: block;
-  border-radius: 10px;
+.grid img:hover {
+    transform: scale(1.1); /* Zoom on hover */
+    box-shadow: 0 0 20px #00bfff; /* Pulse glow */
 }
 
-.card:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 20px #00aaff;
-}
-
-/* Footer */
 footer {
-  text-align: center;
-  padding: 20px;
-  background: #111;
-  margin-top: 40px;
+    text-align: center;
+    padding: 20px;
+    background: #111;
+    font-size: 0.8em;
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+footer li {
+    display: inline;
+    margin: 0 10px;
 }
 
 footer a {
-  color: #00aaff;
-  text-decoration: none;
+    color: #00bfff;
+    text-decoration: none;
+}
+/* Starry Spiral (simple CSS version; uses background for stars, rotate for spiral) */
+@keyframes spiral {
+    0% { transform: rotate(0deg); opacity: 1; }
+    100% { transform: rotate(360deg); opacity: 0; }
+}
+
+#starry-spiral {
+    display: block; /* Show on load */
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><circle cx="50" cy="50" r="2" fill="white"/></svg>') repeat; /* Simple stars */
+    animation: spiral 1s forwards; /* 1s spiral fade out */
+}
+
+/* Title Fade-In and Pulse */
+@keyframes fadeInPulse {
+    0% { opacity: 0; }
+    50% { opacity: 1; transform: scale(1.05); } /* Pulse */
+    100% { opacity: 1; transform: scale(1); }
+}
+
+h1#moviefic-title {
+    display: block; /* Show after spiral */
+    animation: fadeInPulse 2s ease-in-out 1s forwards; /* Starts after 1s, lasts 2s */
+}
+
+/* After animation, move title up to banner */
+header#banner {
+    animation: showBanner 0.5s 3s forwards; /* Shows after 3s total */
+}
+
+@keyframes showBanner {
+    0% { display: none; }
+    100% { display: block; }
+}
+
+h1#moviefic-title.moved {
+    position: static;
+    transform: none;
+    font-size: 2em; /* Smaller in banner */
+    margin: 0 auto;
+}
+
+#hamburger-menu {
+    animation: fadeIn 0.5s 3.5s forwards; /* Fades in after banner */
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; display: none; }
+    100% { opacity: 1; display: block; }
 }
