@@ -1,18 +1,17 @@
-window.addEventListener("load", () => {
-  setTimeout(() => {
-    document.getElementById("intro").style.display = "none";
-    document.querySelector("header").style.display = "flex";
-  }, 3000); // 3 seconds intro
-});
+// Wait for page load
+document.addEventListener('DOMContentLoaded', () => {
+    // After title pulse (3s total), move title to banner
+    setTimeout(() => {
+        const title = document.getElementById('moviefic-title');
+        title.classList.add('moved');
+        // Hide starry spiral fully
+        document.getElementById('starry-spiral').style.display = 'none';
+    }, 3000); // 1s spiral + 2s pulse
 
-// Toggle mobile nav
-const hamburger = document.querySelector(".hamburger");
-const mobileNav = document.querySelector(".mobile-nav");
-
-hamburger.addEventListener("click", () => {
-  if (mobileNav.style.display === "flex") {
-    mobileNav.style.display = "none";
-  } else {
-    mobileNav.style.display = "flex";
-  }
+    // Hamburger menu toggle
+    const hamburger = document.getElementById('hamburger-menu');
+    const menu = document.getElementById('menu');
+    hamburger.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+    });
 });
