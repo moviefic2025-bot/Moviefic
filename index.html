@@ -4,17 +4,192 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MOVIEFIC</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #000;
+            color: #fff;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+
+        #starry-spiral {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><circle cx="50" cy="50" r="2" fill="white"/></svg>') repeat;
+            animation: spiral 1s forwards;
+        }
+
+        @keyframes spiral {
+            0% { transform: rotate(0deg); opacity: 1; }
+            100% { transform: rotate(360deg); opacity: 0; }
+        }
+
+        header#banner {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            text-align: center;
+            padding: 10px 0;
+            z-index: 5;
+            display: none;
+            animation: showBanner 0.5s 3s forwards;
+        }
+
+        @keyframes showBanner {
+            0% { display: none; }
+            100% { display: block; }
+        }
+
+        h1#moviefic-title {
+            font-size: 3em;
+            color: #00bfff;
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 6;
+            display: block;
+            animation: fadeInPulse 2s ease-in-out 1s forwards;
+        }
+
+        @keyframes fadeInPulse {
+            0% { opacity: 0; }
+            50% { opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
+            100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        }
+
+        h1#moviefic-title.moved {
+            position: static;
+            transform: none;
+            font-size: 2em;
+            margin: 0 auto;
+        }
+
+        #hamburger-menu {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 2em;
+            cursor: pointer;
+            display: none;
+            animation: fadeIn 0.5s 3.5s forwards;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; display: none; }
+            100% { opacity: 1; display: block; }
+        }
+
+        nav#menu {
+            display: none;
+            position: absolute;
+            top: 50px;
+            right: 20px;
+            background: #111;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        nav#menu ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        nav#menu li a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            padding: 5px;
+        }
+
+        nav#menu li a:hover {
+            color: #00bfff;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        main {
+            margin-top: 60px;
+            padding: 20px;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            justify-items: center;
+        }
+
+        .grid img {
+            width: 200px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .grid img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px #00bfff;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #111;
+            font-size: 0.8em;
+        }
+
+        footer ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        footer li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        footer a {
+            color: #00bfff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <!-- Starry Spiral Animation (we'll add this in CSS/JS later) -->
     <div id="starry-spiral"></div>
 
-    <!-- Header/Banner with Title and Hamburger Menu -->
     <header id="banner">
         <h1 id="moviefic-title">MOVIEFIC</h1>
         <button id="hamburger-menu">☰</button>
-        <!-- Menu items (hidden by default, we'll toggle with JS) -->
         <nav id="menu" class="hidden">
             <ul>
                 <li><a href="#">Home</a></li>
@@ -25,16 +200,13 @@
         </nav>
     </header>
 
-    <!-- Main Content Grids -->
     <main>
         <section id="new-movies">
             <h2>New Movies</h2>
             <div class="grid">
-                <!-- Placeholder posters; replace with real image URLs later -->
                 <img src="https://via.placeholder.com/200x300?text=Movie1" alt="Movie Poster">
                 <img src="https://via.placeholder.com/200x300?text=Movie2" alt="Movie Poster">
                 <img src="https://via.placeholder.com/200x300?text=Movie3" alt="Movie Poster">
-                <!-- Add more as needed -->
             </div>
         </section>
 
@@ -57,7 +229,6 @@
         </section>
     </main>
 
-    <!-- Footer -->
     <footer>
         <p>&copy; 2025 MOVIEFIC. All rights reserved.</p>
         <ul>
@@ -67,6 +238,21 @@
         </ul>
     </footer>
 
-    <script src="jss/home.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                const title = document.getElementById('moviefic-title');
+                title.classList.add('moved');
+                document.getElementById('starry-spiral').style.display = 'none';
+            }, 3000);
+
+            const hamburger = document.getElementById('hamburger-menu');
+            const menu = document.getElementById('menu');
+            hamburger.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+                menu.style.display = menu.classList.contains('hidden') ? 'none' : 'block';
+            });
+        });
+    </script>
 </body>
 </html>
