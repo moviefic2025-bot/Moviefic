@@ -1,31 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Marvel Cinematic Universe - MovieFic</title>
-  <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MOVIEFIC</title>
+  <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
-  <!-- Starry Night Background Canvas -->
-  <canvas id="starfield"></canvas>
+  <!-- Intro Section -->
+  <div id="intro">
+    <div class="starry"></div>
+    <h1 id="logo">MOVIEFIC</h1>
+  </div>
 
-  <!-- Content -->
+  <!-- Header/Banner -->
   <header>
-    <h1>Marvel Cinematic Universe</h1>
-    <p>Welcome to MovieFic ✨</p>
+    <h1 class="banner">MOVIEFIC</h1>
+    <div class="hamburger">&#9776;</div>
   </header>
 
-  <nav class="menu">
-    <button class="hamburger" onclick="toggleMenu()">☰</button>
-    <ul id="menuItems">
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Movies</a></li>
-      <li><a href="#">Series</a></li>
-      <li><a href="#">About</a></li>
-    </ul>
+  <!-- Navigation -->
+  <nav class="mobile-nav">
+    <a href="#">Home</a>
+    <a href="#">Movies</a>
+    <a href="#">Series</a>
+    <a href="#">Universes</a>
+    <a href="#">Contact</a>
   </nav>
 
-  <script src="js/home.js" defer></script>
+  <!-- Main Content -->
+  <main>
+    <section class="grid-section">
+      <h2>New Movies</h2>
+      <div class="grid">
+        <div class="card"><img src="images/movie1.jpg" alt="Movie 1"/></div>
+        <div class="card"><img src="images/movie2.jpg" alt="Movie 2"/></div>
+        <div class="card"><img src="images/movie3.jpg" alt="Movie 3"/></div>
+      </div>
+    </section>
+
+    <section class="grid-section">
+      <h2>New Series</h2>
+      <div class="grid">
+        <div class="card"><img src="images/series1.jpg" alt="Series 1"/></div>
+        <div class="card"><img src="images/series2.jpg" alt="Series 2"/></div>
+        <div class="card"><img src="images/series3.jpg" alt="Series 3"/></div>
+      </div>
+    </section>
+
+    <section class="grid-section">
+      <h2>Cinematic Universes</h2>
+      <div class="grid">
+        <div class="card"><img src="images/mcu.jpg" alt="MCU"/></div>
+        <div class="card"><img src="images/dc.jpg" alt="DC"/></div>
+        <div class="card"><img src="images/starwars.jpg" alt="Star Wars"/></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 MOVIEFIC | <a href="#">About</a> | <a href="#">Contact</a></p>
+  </footer>
+
+  <script src="js/home.js"></script>
 </body>
 </html>
